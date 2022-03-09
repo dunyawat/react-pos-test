@@ -44,7 +44,7 @@ function validate(values){
 }
 
 function mapStateToProps ({products}) {
-    if(products && products.id){
+    if(products && products._id){
         return { initialValues : products };
     } else {
         return {};

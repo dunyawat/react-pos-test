@@ -14,6 +14,7 @@ class Home extends Component {
 
   componentDidMount(){
     this.props.productsFetch();
+    console.log(this.props)
   }
 
   // componentDidMount(){
@@ -28,14 +29,14 @@ class Home extends Component {
 
   //   //แบบที่ 2 Rest
 
-  // //   fetch("http://localhost:3001/products",{method : "GET"})
+  // //   fetch("https://dunyawat-pos-api.herokuapp.com/products",{method : "GET"})
   // //   .then(res => res.json())
   // //   .then(res => {this.setState({products : res })})
   // // 
 
 
   // //แบบที่ 3 Axios
-  //   axios.get("http://localhost:3001/products").then(res=>{
+  //   axios.get("https://dunyawat-pos-api.herokuapp.com/products").then(res=>{
   //     console.log(res.data);
   //     {this.setState({products : res.data})}
   //   });

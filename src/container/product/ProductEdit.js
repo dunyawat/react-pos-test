@@ -11,8 +11,8 @@ class ProductEdit extends Component{
 
     componentDidMount(){
         console.log(this.props.match);
-        if(this.props.match.params.id){
-            this.props.productFetch(this.props.match.params.id);
+        if(this.props.match.params._id){
+            this.props.productFetch(this.props.match.params._id);
         }
     }
 
@@ -46,7 +46,7 @@ class ProductEdit extends Component{
                                     </div>
                                 )
                             }
-                            <ProductForm  onProductSubmit={() => productUpdate(products.id , formValues)} />
+                            <ProductForm  onProductSubmit={() => productUpdate(match.params.id , formValues)} />
                         </div>
                     )}
                 </div>

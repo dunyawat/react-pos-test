@@ -9,7 +9,7 @@ class Calculator extends Component {
             }else{
                 return orders.map(order =>{
                     return(
-                        <li key="{order.product.id}" className="text-right text-success title">
+                        <li key="{order.product._id}" className="text-right text-success title">
                             {order.product.productName} x {order.quantity} = { order.product.unitPrice * order.quantity}
                             <button className="btn btn-light btn-sm" onClick={() => this.props.onDelOrder(order.product)}>X</button>
                             <button className="btn btn-light btn-sm" onClick={order.quantity > 1 ? () => this.props.onDcOrder(order.product) : () => this.props.onDelOrder(order.product)}>-</button>

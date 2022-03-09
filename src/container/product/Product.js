@@ -19,11 +19,12 @@ class Product extends Component {
     }
 
     editProduct(product){
-        this.props.history.push('products/edit/' + product.id);
+        this.props.history.push('products/edit/' + product._id);
     }
 
     delProduct(product){
-        this.props.productDelete(product.id);
+        this.props.productDelete(product._id);
+        window.location.reload();
     }
 
     render(){

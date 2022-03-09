@@ -15,14 +15,14 @@ class Order extends Component{
     }
 
     delOrder(order) {
-        this.props.orderDelete(order.id);
+        this.props.orderDelete(order._id);
     }
 
     showOrder(){
         return this.props.orders && this.props.orders.map(order => {
             const date = new Date(order.orderedDate);
             return (
-                <div key={order.id} className="col-md-3">
+                <div key={order._id} className="col-md-3">
                     <hr />
                     <p>
                         <button className="btn btn-danger btn-sm title" onClick={() => this.delOrder(order)}>X</button>
@@ -30,7 +30,7 @@ class Order extends Component{
                     <h5>วันที่ {date.toLocaleString} {date.toLocaleTimeString} </h5>
                     <ul>
                         {order.orders && order.orders.map(record => {
-                            return (<li key={record.product.id}>
+                            return (<li key={record.product._id}>
                                 {record.product.productName} x {record.quantity} = {record.product.unitPrice * record.quantity}
                             </li>)
                         })}

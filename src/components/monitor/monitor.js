@@ -17,7 +17,7 @@ class Monitor extends Component {
     }
 
     addOrder(product) {
-        let findOrder = this.state.orders.find(orders => orders.product.id == product.id);
+        let findOrder = this.state.orders.find(orders => orders.product._id == product._id);
         if(findOrder) {
             findOrder.quantity++;
         } else{
@@ -28,15 +28,15 @@ class Monitor extends Component {
     }
 
     delOrder(product) {
-        let findOrder = this.state.orders.find(order => order.product.id == product.id);
-        let resultOrder = this.state.orders.filter(order => order.product.id != product.id);
+        let findOrder = this.state.orders.find(order => order.product._id == product._id);
+        let resultOrder = this.state.orders.filter(order => order.product._id != product._id);
         const totalPrice = this.state.totalPrice - (findOrder.quantity * parseInt(findOrder.product.unitPrice));
 
         this.setState({totalPrice:totalPrice,orders:resultOrder,confirm:false});
     }   
 
     dcOrder(product){
-        let findOrder = this.state.orders.find(order => order.product.id == product.id);
+        let findOrder = this.state.orders.find(order => order.product._id == product._id);
         if(findOrder) {
             findOrder.quantity--;
             var total = this.state.totalPrice - parseInt(findOrder.product.unitPrice);
@@ -49,7 +49,7 @@ class Monitor extends Component {
     }
 
     InOrder(product){
-        let findOrder = this.state.orders.find(order => order.product.id == product.id);
+        let findOrder = this.state.orders.find(order => order.product._id == product._id);
         if(findOrder) {
             findOrder.quantity++;
         }
@@ -64,7 +64,7 @@ class Monitor extends Component {
     comfirmOrder(){
         const{totalPrice,orders} = this.state;
         if(orders && orders.length > 0){
-            axios.post("http://localhost:3001/orders",{orderedDate : new Date(),totalPrice,orders})
+            axios.post("https://dunyawat-pos-api.herokuapp.com/orders",{orderedDate : new Date(),totalPrice,orders})
             .then(res => {
                 this.setState({totalPrice:0,orders:[],confirm:true,msg:'บัญทึกรายการสั่งซื้อเรียบร้อยแล้ว'})
             })
